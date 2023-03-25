@@ -54,7 +54,7 @@ class GeocoderControllerTest {
                         "http://localhost:" + port + "/geocoder/search?address=кубгу",
                         Address.class);
 
-        assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
+        assertEquals(HttpStatus.OK, response.getStatusCode());
 
         final Address body = response.getBody();
         assertEquals(testAddress, body);
