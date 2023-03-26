@@ -43,9 +43,9 @@ class TestControllerTest {
     @Test
     void integrationTest() {
         ResponseEntity<ru.kubsu.geocoder.model.Test> response = testRestTemplate.
-                getForEntity(
-                        "http://localhost:" + port + "/tests/1?name=test",
-                        ru.kubsu.geocoder.model.Test.class);
+            getForEntity(
+                "http://localhost:" + port + "/tests/1?name=test",
+                ru.kubsu.geocoder.model.Test.class);
 
         assertEquals(HttpStatus.OK, response.getStatusCode());
 
@@ -59,11 +59,11 @@ class TestControllerTest {
     @Test
     void integrationTestWhenNameIsNull() {
         ResponseEntity<Map<String, String>> response = testRestTemplate
-                .exchange("http://localhost:" + port + "/tests/1",
-                        HttpMethod.GET,
-                        null,
-                        new ParameterizedTypeReference<Map<String, String>>() {
-                        });
+            .exchange("http://localhost:" + port + "/tests/1",
+                HttpMethod.GET,
+                null,
+                new ParameterizedTypeReference<Map<String, String>>() {
+                });
 
         assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
 
@@ -76,10 +76,10 @@ class TestControllerTest {
     @Test
     void integrationTestWhenIdIsString() {
         ResponseEntity<RestApiError> response = testRestTemplate
-                .exchange("http://localhost:" + port + "/tests/abc?name=test",
-                        HttpMethod.GET,
-                        null,
-                        RestApiError.class);
+            .exchange("http://localhost:" + port + "/tests/abc?name=test",
+                HttpMethod.GET,
+                null,
+                RestApiError.class);
 
         assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
 

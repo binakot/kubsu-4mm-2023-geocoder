@@ -27,10 +27,10 @@ public class GeocoderController {
     }
 
     @GetMapping(value = "/search", produces = APPLICATION_JSON_VALUE)
-    public ResponseEntity<Address> search(final @RequestParam String address) {
-        return addressService.search(address)
-                .map(p -> ResponseEntity.status(HttpStatus.OK).body(p))
-                .orElseGet(() -> ResponseEntity.status(HttpStatus.NOT_FOUND).build());
+    public ResponseEntity<Address> search(final @RequestParam String query) {
+        return addressService.search(query)
+            .map(p -> ResponseEntity.status(HttpStatus.OK).body(p))
+            .orElseGet(() -> ResponseEntity.status(HttpStatus.NOT_FOUND).build());
     }
 
     // TODO: reverse

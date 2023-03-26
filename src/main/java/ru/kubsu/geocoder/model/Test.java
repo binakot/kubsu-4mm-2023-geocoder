@@ -60,9 +60,9 @@ public class Test {
         }
         final Test test = (Test) o;
         return Objects.equals(id, test.id)
-                && Objects.equals(name, test.name)
-                && Objects.equals(done, test.done)
-                && mark == test.mark;
+            && Objects.equals(name, test.name)
+            && Objects.equals(done, test.done)
+            && mark == test.mark;
     }
 
     @Override
@@ -73,10 +73,10 @@ public class Test {
     @Override
     public String toString() {
         return "Test{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", done=" + done +
-                ", mark=" + mark +
-                '}';
+            "id=" + id +
+            ", name='" + name + '\'' +
+            ", done=" + done +
+            ", mark=" + mark +
+            '}';
     }
 }

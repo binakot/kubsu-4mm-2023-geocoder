@@ -45,14 +45,15 @@ class GeocoderControllerTest {
 
     @Test
     void search() {
-        final Address testAddress = buildTestAddress();
+        final String query = "кубгу";
+        final Address testAddress = buildTestAddress(query);
         when(nominatimClient.search(anyString()))
-                .thenReturn(Optional.of(buildTestPlace()));
+            .thenReturn(Optional.of(buildTestPlace()));
 
         ResponseEntity<Address> response = testRestTemplate.
-                getForEntity(
-                        "http://localhost:" + port + "/geocoder/search?address=кубгу",
-                        Address.class);
+            getForEntity(
+                "http://localhost:" + port + "/geocoder/search?query=" + query,
+                Address.class);
 
         assertEquals(HttpStatus.OK, response.getStatusCode());
 
@@ -62,13 +63,14 @@ class GeocoderControllerTest {
 
     @Test
     void searchWhenNominatimNotResponse() {
+        final String query = "кубгу";
         when(nominatimClient.search(anyString()))
-                .thenReturn(Optional.empty());
+            .thenReturn(Optional.empty());
 
         ResponseEntity<Address> response = testRestTemplate.
-                getForEntity(
-                        "http://localhost:" + port + "/geocoder/search?address=кубгу",
-                        Address.class);
+            getForEntity(
+                "http://localhost:" + port + "/geocoder/search?query=" + query,
+                Address.class);
 
         assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
         assertNull(response.getBody());
@@ -76,11 +78,11 @@ class GeocoderControllerTest {
 
     private static NominatimPlace buildTestPlace() {
         return new NominatimPlace(45.02036085, 39.03099994504268,
-                "Кубанский государственный университет, улица Димитрова, Карасунский округ, Краснодар, городской округ Краснодар, Краснодарский край, Южный федеральный округ, 350000, Россия",
-                "university");
+            "Кубанский государственный университет, улица Димитрова, Карасунский округ, Краснодар, городской округ Краснодар, Краснодарский край, Южный федеральный округ, 350000, Россия",
+            "university");
     }
 
-    private static Address buildTestAddress() {
-        return Address.of(buildTestPlace());
+    private static Address buildTestAddress(final String query) {
+        return Address.of(buildTestPlace(), query);
     }
 }

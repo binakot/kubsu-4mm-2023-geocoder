@@ -52,13 +52,13 @@ public class TestController {
         if (random.nextDouble() > 0.5) {
             final NominatimPlace place = new NominatimPlace();
             return ResponseEntity
-                    .status(HttpStatus.OK)
-                    .body(place);
+                .status(HttpStatus.OK)
+                .body(place);
         } else {
             final RestApiError error = new RestApiError();
             return ResponseEntity
-                    .status(HttpStatus.NOT_FOUND)
-                    .body(error);
+                .status(HttpStatus.NOT_FOUND)
+                .body(error);
         }
     }
 }

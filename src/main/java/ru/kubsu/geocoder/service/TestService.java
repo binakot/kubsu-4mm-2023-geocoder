@@ -34,6 +34,6 @@ public class TestService {
 
     public Test load(final String name) {
         return repository.findByName(name)
-                .orElse(null);
+            .orElse(null);
     }
 }
