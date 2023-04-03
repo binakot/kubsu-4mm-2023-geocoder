@@ -40,5 +40,5 @@ public interface NominatimClient {
         }
     }
 
-    //TODO: reverse
+    // TODO: reverse
 }

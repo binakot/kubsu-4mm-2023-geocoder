@@ -1,0 +1,7 @@
+GET http://localhost/geocoder/search?query=кубгу
+Accept: application/json
+
+###
+
+GET http://localhost/geocoder/reverse?lat=45.02036085&lon=39.03099994
+Accept: application/json

@@ -8,6 +8,5 @@ class GeocoderApplicationTests {
 
     @Test
     void contextLoads() {
-
     }
 }
