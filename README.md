@@ -45,10 +45,9 @@ $ ./gradlew bootRun
 
 ## Запуск через Docker Compose
 
-Собираем `Jar`-артефакт, упаковываем в `Docker` образ и запускаем стек приложений через `Docker Compose`:
+Собираем `Docker` образ и запускаем стек приложений через `Docker Compose`:
 
 ```bash
-$ ./gradlew bootJar
-$ docker build --build-arg JAR_FILE="./build/libs/geocoder-0.0.1-SNAPSHOT.jar" -t geocoder:latest .
+$ docker build -t geocoder:latest .
 $ docker compose up -d
 ```
